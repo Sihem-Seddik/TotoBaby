@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-
 import '../../generated/l10n.dart';
 import '../models/order.dart';
 import '../models/order_status.dart';
@@ -17,12 +16,10 @@ class ReviewsController extends ControllerMVC {
   List<Product> productsOfOrder = [];
   List<OrderStatus> orderStatus = <OrderStatus>[];
   GlobalKey<ScaffoldState> scaffoldKey;
-
   ReviewsController() {
     this.scaffoldKey = new GlobalKey<ScaffoldState>();
     this.marketReview = new Review.init("0");
   }
-
   void listenForOrder({String orderId, String message}) async {
     final Stream<Order> stream = await getOrder(orderId);
     stream.listen((Order _order) {

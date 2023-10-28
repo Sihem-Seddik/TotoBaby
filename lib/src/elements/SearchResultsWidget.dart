@@ -68,7 +68,7 @@ class _SearchResultWidgetState extends StateMVC<SearchResultWidget> {
               autofocus: true,
               decoration: InputDecoration(
                 contentPadding: EdgeInsets.all(12),
-                hintText: ('search_for_markets_or_products'),
+                hintText: S.of(context).search,
                 hintStyle: Theme.of(context)
                     .textTheme
                     .caption

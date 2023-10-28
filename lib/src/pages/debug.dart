@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-
 import '../controllers/favorite_controller.dart';
 import '../elements/CircularLoadingWidget.dart';
 import '../models/route_argument.dart';
@@ -40,7 +38,10 @@ class _DebugWidgetState extends StateMVC<DebugWidget> {
           centerTitle: true,
           title: Text(
             'Debug',
-            style: Theme.of(context).textTheme.headline6.merge(TextStyle(letterSpacing: 1.3)),
+            style: Theme.of(context)
+                .textTheme
+                .headline6
+                .merge(TextStyle(letterSpacing: 1.3)),
           ),
           actions: <Widget>[
             IconButton(

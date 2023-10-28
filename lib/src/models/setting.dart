@@ -22,11 +22,8 @@ class Setting {
   ValueNotifier<Locale> mobileLanguage = new ValueNotifier(Locale('en', ''));
   String appVersion;
   bool enableVersion = true;
-
   ValueNotifier<Brightness> brightness = new ValueNotifier(Brightness.light);
-
   Setting();
-
   Setting.fromJSON(Map<String, dynamic> jsonMap) {
     try {
       appName = jsonMap['app_name'] ?? null;

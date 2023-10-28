@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-
 import '../../generated/l10n.dart';
 import '../models/cart.dart';
 import '../models/favorite.dart';
@@ -17,11 +16,9 @@ class ProductController extends ControllerMVC {
   Favorite favorite;
   bool loadCart = false;
   GlobalKey<ScaffoldState> scaffoldKey;
-
   ProductController() {
     this.scaffoldKey = new GlobalKey<ScaffoldState>();
   }
-
   void listenForProduct({String productId, String message}) async {
     final Stream<Product> stream = await getProduct(productId);
     stream.listen((Product _product) {

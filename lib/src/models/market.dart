@@ -19,9 +19,7 @@ class Market {
   bool availableForDelivery;
   double deliveryRange;
   double distance;
-
   Market();
-
   Market.fromJSON(Map<String, dynamic> jsonMap) {
     try {
       id = jsonMap['id'].toString();
@@ -30,20 +28,30 @@ class Market {
           ? Media.fromJSON(jsonMap['media'][0])
           : new Media();
       rate = jsonMap['rate'] ?? '0';
-      deliveryFee = jsonMap['delivery_fee'] != null ? jsonMap['delivery_fee'].toDouble() : 0.0;
-      adminCommission = jsonMap['admin_commission'] != null ? jsonMap['admin_commission'].toDouble() : 0.0;
-      deliveryRange = jsonMap['delivery_range'] != null ? jsonMap['delivery_range'].toDouble() : 0.0;
+      deliveryFee = jsonMap['delivery_fee'] != null
+          ? jsonMap['delivery_fee'].toDouble()
+          : 0.0;
+      adminCommission = jsonMap['admin_commission'] != null
+          ? jsonMap['admin_commission'].toDouble()
+          : 0.0;
+      deliveryRange = jsonMap['delivery_range'] != null
+          ? jsonMap['delivery_range'].toDouble()
+          : 0.0;
       address = jsonMap['address'];
       description = jsonMap['description'];
       phone = jsonMap['phone'];
       mobile = jsonMap['mobile'];
-      defaultTax = jsonMap['default_tax'] != null ? jsonMap['default_tax'].toDouble() : 0.0;
+      defaultTax = jsonMap['default_tax'] != null
+          ? jsonMap['default_tax'].toDouble()
+          : 0.0;
       information = jsonMap['information'];
       latitude = jsonMap['latitude'];
       longitude = jsonMap['longitude'];
       closed = jsonMap['closed'] ?? false;
       availableForDelivery = jsonMap['available_for_delivery'] ?? false;
-      distance = jsonMap['distance'] != null ? double.parse(jsonMap['distance'].toString()) : 0.0;
+      distance = jsonMap['distance'] != null
+          ? double.parse(jsonMap['distance'].toString())
+          : 0.0;
     } catch (e) {
       id = '';
       name = '';

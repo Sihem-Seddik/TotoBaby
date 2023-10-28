@@ -4,9 +4,7 @@ class Notification {
   Map<String, dynamic> data;
   bool read;
   DateTime createdAt;
-
   Notification();
-
   Notification.fromJSON(Map<String, dynamic> jsonMap) {
     try {
       id = jsonMap['id'].toString();

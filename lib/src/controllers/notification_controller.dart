@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-
 import '../../generated/l10n.dart';
 import '../models/notification.dart' as model;
 import '../repository/notification_repository.dart';
@@ -8,12 +7,10 @@ import '../repository/notification_repository.dart';
 class NotificationController extends ControllerMVC {
   List<model.Notification> notifications = <model.Notification>[];
   GlobalKey<ScaffoldState> scaffoldKey;
-
   NotificationController() {
     this.scaffoldKey = new GlobalKey<ScaffoldState>();
     listenForNotifications();
   }
-
   void listenForNotifications({String message}) async {
     final Stream<model.Notification> stream = await getNotifications();
     stream.listen((model.Notification _notification) {

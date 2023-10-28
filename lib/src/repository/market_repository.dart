@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:global_configuration/global_configuration.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../helpers/custom_trace.dart';
 import '../helpers/helper.dart';
 import '../models/address.dart';
@@ -125,7 +123,6 @@ Future<Stream<Market>> getMarket(String id, Address address) async {
   try {
     final client = new http.Client();
     final streamedRest = await client.send(http.Request('get', uri));
-
     return streamedRest.stream
         .transform(utf8.decoder)
         .transform(json.decoder)
@@ -143,7 +140,6 @@ Future<Stream<Review>> getMarketReviews(String id) async {
   try {
     final client = new http.Client();
     final streamedRest = await client.send(http.Request('get', Uri.parse(url)));
-
     return streamedRest.stream
         .transform(utf8.decoder)
         .transform(json.decoder)

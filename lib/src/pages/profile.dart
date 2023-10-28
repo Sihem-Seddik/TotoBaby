@@ -47,7 +47,7 @@ class _ProfileWidgetState extends StateMVC<ProfileWidget> {
         ),
         actions: <Widget>[
           new ShoppingCartButtonWidget(
-              iconColor: Theme.of(context).primaryColor,
+              iconColor: Theme.of(context).accentColor,
               labelColor: Theme.of(context).hintColor),
         ],
       ),

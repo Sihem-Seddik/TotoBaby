@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-
 import '../helpers/app_config.dart' as config;
 import '../helpers/helper.dart';
 import '../helpers/maps_util.dart';
@@ -21,9 +19,9 @@ class MapController extends ControllerMVC {
   CameraPosition cameraPosition;
   MapsUtil mapsUtil = new MapsUtil();
   Completer<GoogleMapController> mapController = Completer();
-
   void listenForNearMarkets(Address myLocation, Address areaLocation) async {
-    final Stream<Market> stream = await getNearMarkets(myLocation, areaLocation);
+    final Stream<Market> stream =
+        await getNearMarkets(myLocation, areaLocation);
     stream.listen((Market _market) {
       setState(() {
         topMarkets.add(_market);
@@ -53,7 +51,9 @@ class MapController extends ControllerMVC {
         }
       });
       if (!currentAddress.isUnknown()) {
-        Helper.getMyPositionMarker(currentAddress.latitude, currentAddress.longitude).then((marker) {
+        Helper.getMyPositionMarker(
+                currentAddress.latitude, currentAddress.longitude)
+            .then((marker) {
           setState(() {
             allMarkers.add(marker);
           });
@@ -71,11 +71,14 @@ class MapController extends ControllerMVC {
       currentAddress = await sett.getCurrentLocation();
       setState(() {
         cameraPosition = CameraPosition(
-          target: LatLng(double.parse(currentMarket.latitude), double.parse(currentMarket.longitude)),
+          target: LatLng(double.parse(currentMarket.latitude),
+              double.parse(currentMarket.longitude)),
           zoom: 14.4746,
         );
       });
-      Helper.getMyPositionMarker(currentAddress.latitude, currentAddress.longitude).then((marker) {
+      Helper.getMyPositionMarker(
+              currentAddress.latitude, currentAddress.longitude)
+          .then((marker) {
         setState(() {
           allMarkers.add(marker);
         });
@@ -105,7 +108,10 @@ class MapController extends ControllerMVC {
   void getMarketsOfArea() async {
     setState(() {
       topMarkets = <Market>[];
-      Address areaAddress = Address.fromJSON({"latitude": cameraPosition.target.latitude, "longitude": cameraPosition.target.longitude});
+      Address areaAddress = Address.fromJSON({
+        "latitude": cameraPosition.target.latitude,
+        "longitude": cameraPosition.target.longitude
+      });
       if (cameraPosition != null) {
         listenForNearMarkets(currentAddress, areaAddress);
       } else {
@@ -129,10 +135,15 @@ class MapController extends ControllerMVC {
         .then((dynamic res) {
       if (res != null) {
         List<LatLng> _latLng = res as List<LatLng>;
-        _latLng?.insert(0, new LatLng(currentAddress.latitude, currentAddress.longitude));
+        _latLng?.insert(
+            0, new LatLng(currentAddress.latitude, currentAddress.longitude));
         setState(() {
           polylines.add(new Polyline(
-              visible: true, polylineId: new PolylineId(currentAddress.hashCode.toString()), points: _latLng, color: config.Colors().mainColor(0.8), width: 6));
+              visible: true,
+              polylineId: new PolylineId(currentAddress.hashCode.toString()),
+              points: _latLng,
+              color: config.Colors().mainColor(0.8),
+              width: 6));
         });
       }
     });

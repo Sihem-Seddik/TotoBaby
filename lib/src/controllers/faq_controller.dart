@@ -8,12 +8,10 @@ import '../repository/faq_repository.dart';
 class FaqController extends ControllerMVC {
   List<FaqCategory> faqs = <FaqCategory>[];
   GlobalKey<ScaffoldState> scaffoldKey;
-
   FaqController() {
     scaffoldKey = new GlobalKey<ScaffoldState>();
     listenForFaqs();
   }
-
   void listenForFaqs({String message}) async {
     final Stream<FaqCategory> stream = await getFaqCategories();
     stream.listen((FaqCategory _faq) {

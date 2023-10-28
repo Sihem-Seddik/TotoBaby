@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mvc_pattern/mvc_pattern.dart';
-
 import '../../generated/l10n.dart';
 import '../models/category.dart';
 import '../models/gallery.dart';
@@ -22,11 +21,9 @@ class MarketController extends ControllerMVC {
   List<Product> featuredProducts = <Product>[];
   List<Review> reviews = <Review>[];
   GlobalKey<ScaffoldState> scaffoldKey;
-
   MarketController() {
     this.scaffoldKey = new GlobalKey<ScaffoldState>();
   }
-
   void listenForMarket({String id, String message}) async {
     final Stream<Market> stream = await getMarket(id, deliveryAddress.value);
     stream.listen((Market _market) {

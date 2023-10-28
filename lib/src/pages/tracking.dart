@@ -102,10 +102,8 @@ class _TrackingWidgetState extends StateMVC<TrackingWidget>
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: Helper.getStarsList(
-                            double.parse(_con
-                                .order.productOrders[0].product.market.rate),
-                            size: 35),
+                        children:
+                            Helper.getStarsList(double.parse('0'), size: 35),
                       ),
                     ),
                   ],
